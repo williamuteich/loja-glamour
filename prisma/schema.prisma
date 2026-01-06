@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Cliente {
+  id              String    @id @default(auto()) @map("_id") @db.ObjectId
+  nome            String
+  email           String    @unique
+  autorizado      Boolean   @default(false)
+  criadoEm        DateTime  @default(now())
+  atualizadoEm    DateTime  @updatedAt
+  dataDescadastro DateTime?
+}
+
+model Produto {
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  nome         String
+  descricao    String?
+  precoCentavos Int      
+  imagemUrl    String?   
+  criadoEm     DateTime  @default(now())
+  atualizadoEm DateTime  @updatedAt
+}
+
+model Campanha {
+  id              String    @id @default(auto()) @map("_id") @db.ObjectId
+  titulo          String
+  textoPrincipal  String
+  textoOpcional   String?
+  criadoEm        DateTime  @default(now())
+  enviadaEm       DateTime?
+  produtosIds     String[]  @db.ObjectId
+  somenteAutorizados Boolean @default(true)
+}
