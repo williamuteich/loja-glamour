@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Users, Gem, Mail, Send, Sparkles, ArrowRight } from "lucide-react";
+import { Users, Gem, Mail, Send, Sparkles, ArrowRight, LayoutDashboard, Package } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   const stats = [
@@ -9,151 +10,141 @@ export default function Home() {
       value: "1.234",
       icon: Users,
       description: "com autorização",
-      color: "bg-gradient-to-br from-blue-500 to-blue-600"
+      color: "bg-linear-to-br from-blue-500 to-blue-600"
     },
     {
       title: "Produtos",
       value: "567",
       icon: Gem,
       description: "cadastrados",
-      color: "bg-gradient-to-br from-purple-500 to-pink-500"
+      color: "bg-linear-to-br from-purple-500 to-pink-500"
     },
     {
       title: "Campanhas",
       value: "89",
       icon: Mail,
       description: "enviadas",
-      color: "bg-gradient-to-br from-[#9a566b] to-purple-600"
-    },
-    {
-      title: "Envios Hoje",
-      value: "45",
-      icon: Send,
-      description: "e-mails",
-      color: "bg-gradient-to-br from-emerald-500 to-green-500"
-    },
+      color: "bg-linear-to-br from-[#9a566b] to-[#9a566b]/80"
+    }
   ];
 
   return (
-    <div className="p-6 space-y-8 animate-fade-in">
-      <div>
-        <h1 className="text-3xl font-bold text-gray-900">
-          Bem-vindo ao <span className="text-[#9a566b]">Joias Admin</span>
-        </h1>
-        <p className="text-gray-600 mt-2">
-          Sistema de gestão de campanhas de e-mail para sua loja
-        </p>
+    <div className="p-8 space-y-10 animate-fade-in max-w-full">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <h1 className="text-4xl font-extrabold tracking-tight text-gray-900">
+            Painel <span className="text-[#9a566b]">Administrativo</span>
+          </h1>
+          <p className="text-gray-500 mt-2 text-lg">
+            Gerencie suas campanhas e clientes com simplicidade e elegância.
+          </p>
+        </div>
+        <div className="flex gap-3">
+          <Link href="/campanhas" className="w-full md:w-auto">
+            <Button className="bg-[#9a566b] hover:bg-[#9a566b]/90 shadow-lg shadow-[#9a566b]/20 px-6 py-6 h-auto text-base font-semibold">
+              <Sparkles className="w-5 h-5 mr-2" />
+              Criar Campanha
+            </Button>
+          </Link>
+        </div>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-6 md:grid-cols-3">
         {stats.map((stat) => (
-          <Card key={stat.title} className="border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-            <CardContent className="pt-6">
-              <div className="flex items-center justify-between">
-                <div className="space-y-2">
-                  <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
-                  <p className="text-sm font-medium text-gray-700">{stat.title}</p>
-                  <p className="text-xs text-gray-500">{stat.description}</p>
-                </div>
-                <div className={`p-3 rounded-xl ${stat.color}`}>
-                  <stat.icon className="w-6 h-6 text-white" />
-                </div>
+          <Card key={stat.title} className="border-none shadow-xl shadow-gray-200/50 hover:shadow-2xl hover:shadow-gray-300/60 transition-all duration-300 group overflow-hidden relative">
+            <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+              <stat.icon className="w-24 h-24 -mr-8 -mt-8" />
+            </div>
+            <CardContent className="pt-8 pb-8 flex items-center justify-between relative z-10">
+              <div className="space-y-1">
+                <p className="text-4xl font-black text-gray-900 tracking-tighter">{stat.value}</p>
+                <p className="text-sm font-bold text-gray-500 uppercase tracking-widest">{stat.title}</p>
+                <p className="text-xs text-gray-400 font-medium">{stat.description}</p>
+              </div>
+              <div className={`p-4 rounded-2xl ${stat.color} shadow-lg shadow-black/10 transition-transform duration-300 group-hover:scale-110`}>
+                <stat.icon className="w-7 h-7 text-white" />
               </div>
             </CardContent>
           </Card>
         ))}
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2">
-        <Card className="border border-gray-200 shadow-sm">
-          <CardHeader>
-            <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-[#9a566b]/10">
-                <Sparkles className="w-5 h-5 text-[#9a566b]" />
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <Card className="border-none shadow-xl shadow-gray-100 bg-white group hover:translate-y-[-4px] transition-transform duration-300">
+          <CardHeader className="pb-4">
+            <div className="flex items-center gap-4">
+              <div className="p-3 rounded-xl bg-blue-50 group-hover:bg-blue-100 transition-colors">
+                <Users className="w-6 h-6 text-blue-600" />
               </div>
               <div>
-                <CardTitle className="text-lg">Criar Nova Campanha</CardTitle>
-                <CardDescription>Envie promoções para seus clientes</CardDescription>
+                <CardTitle className="text-xl font-bold">Clientes</CardTitle>
+                <CardDescription>Banco de dados</CardDescription>
               </div>
             </div>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-gray-600 mb-4">
-              Crie uma campanha promocional com produtos selecionados e envie por e-mail para todos os clientes autorizados.
+            <p className="text-sm text-gray-500 leading-relaxed mb-6">
+              Gerencie sua lista de contatos, visualize permissões de envio e importe novos leads para sua base.
             </p>
-            <Button className="w-full bg-[#9a566b] hover:bg-[#9a566b]/90">
-              <Sparkles className="w-4 h-4 mr-2" />
-              Nova Campanha
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
+            <Link href="/clientes" className="block w-full">
+              <Button variant="outline" className="w-full border-gray-200 hover:border-[#9a566b] hover:text-[#9a566b] hover:bg-[#9a566b]/5 font-semibold group-hover:shadow-md transition-all">
+                Acessar Clientes
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
           </CardContent>
         </Card>
 
-        <Card className="border border-gray-200 shadow-sm">
-          <CardHeader>
-            <CardTitle className="text-lg">Ações Rápidas</CardTitle>
-            <CardDescription>Gerencie sua loja</CardDescription>
+        <Card className="border-none shadow-xl shadow-gray-100 bg-white group hover:translate-y-[-4px] transition-transform duration-300">
+          <CardHeader className="pb-4">
+            <div className="flex items-center gap-4">
+              <div className="p-3 rounded-xl bg-purple-50 group-hover:bg-purple-100 transition-colors">
+                <Package className="w-6 h-6 text-purple-600" />
+              </div>
+              <div>
+                <CardTitle className="text-xl font-bold">Produtos</CardTitle>
+                <CardDescription>Catálogo de itens</CardDescription>
+              </div>
+            </div>
           </CardHeader>
           <CardContent>
-            <div className="space-y-3">
-              <Button variant="outline" className="w-full justify-start">
-                <Users className="w-4 h-4 mr-2" />
-                Gerenciar Clientes
+            <p className="text-sm text-gray-500 leading-relaxed mb-6">
+              Cadastre e organize as peças que serão destaque em suas campanhas promocionais e informativas.
+            </p>
+            <Link href="/produtos" className="block w-full">
+              <Button variant="outline" className="w-full border-gray-200 hover:border-[#9a566b] hover:text-[#9a566b] hover:bg-[#9a566b]/5 font-semibold group-hover:shadow-md transition-all">
+                Gerenciar Produtos
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button variant="outline" className="w-full justify-start">
-                <Gem className="w-4 h-4 mr-2" />
-                Adicionar Produtos
-              </Button>
-              <Button variant="outline" className="w-full justify-start">
-                <Mail className="w-4 h-4 mr-2" />
-                Ver Histórico de Envios
-              </Button>
+            </Link>
+          </CardContent>
+        </Card>
+
+        <Card className="border-none shadow-xl shadow-gray-100 bg-white group hover:translate-y-[-4px] transition-transform duration-300">
+          <CardHeader className="pb-4">
+            <div className="flex items-center gap-4">
+              <div className="p-3 rounded-xl bg-pink-50 group-hover:bg-pink-100 transition-colors">
+                <Mail className="w-6 h-6 text-[#9a566b]" />
+              </div>
+              <div>
+                <CardTitle className="text-xl font-bold">Campanhas</CardTitle>
+                <CardDescription>Envio e Histórico</CardDescription>
+              </div>
             </div>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-gray-500 leading-relaxed mb-6">
+              Acompanhe o desempenho dos seus envios passados ou inicie uma nova comunicação agora mesmo.
+            </p>
+            <Link href="/campanhas" className="block w-full">
+              <Button variant="outline" className="w-full border-gray-200 hover:border-[#9a566b] hover:text-[#9a566b] hover:bg-[#9a566b]/5 font-semibold group-hover:shadow-md transition-all">
+                Ver Campanhas
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
           </CardContent>
         </Card>
       </div>
-
-      <Card className="border border-gray-200 shadow-sm">
-        <CardHeader>
-          <CardTitle>Como Funciona</CardTitle>
-          <CardDescription>
-            Sistema simples de envio de promoções por e-mail
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid gap-4 md:grid-cols-3">
-            <div className="space-y-2">
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-sm font-medium">1</div>
-                <h3 className="font-medium">Cadastre Clientes</h3>
-              </div>
-              <p className="text-sm text-gray-600">
-                Colete e-mails de clientes com autorização para receber promoções
-              </p>
-            </div>
-
-            <div className="space-y-2">
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-sm font-medium">2</div>
-                <h3 className="font-medium">Adicione Produtos</h3>
-              </div>
-              <p className="text-sm text-gray-600">
-                Cadastre produtos com imagens, descrição e preço para usar nas campanhas
-              </p>
-            </div>
-
-            <div className="space-y-2">
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full bg-[#9a566b]/10 text-[#9a566b] flex items-center justify-center text-sm font-medium">3</div>
-                <h3 className="font-medium">Envie Campanhas</h3>
-              </div>
-              <p className="text-sm text-gray-600">
-                Crie e envie promoções visuais por e-mail de forma simples e profissional
-              </p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
     </div>
   );
 }

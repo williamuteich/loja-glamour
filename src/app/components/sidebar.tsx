@@ -27,7 +27,7 @@ const Sidebar = () => {
                             <Link
                                 key={item.href}
                                 href={item.href}
-                                className="group flex items-center px-3 py-2.5 text-sm font-medium rounded-lg text-gray-400 hover:bg-white/5 hover:text-white transition-all duration-200 ease-in-out border border-transparent hover:border-white/10 shadow-sm"
+                                className="group flex items-center px-3 py-2.5 text-sm font-medium rounded-lg text-gray-400 hover:bg-white/5 hover:text-white transition-all duration-200 ease-in-out border border-transparent hover:border-white/10 shadow-sm cursor-pointer"
                             >
                                 <item.icon className="mr-3 h-4 w-4 text-gray-500 group-hover:text-[#9a566b] transition-colors" />
                                 {item.label}
