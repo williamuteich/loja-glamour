@@ -39,19 +39,11 @@ export default function Home() {
             Gerencie suas campanhas e clientes com simplicidade e elegância.
           </p>
         </div>
-        <div className="flex gap-3">
-          <Link href="/campanhas" className="w-full md:w-auto">
-            <Button className="bg-[#9a566b] hover:bg-[#9a566b]/90 shadow-lg shadow-[#9a566b]/20 px-6 py-6 h-auto text-base font-semibold">
-              <Sparkles className="w-5 h-5 mr-2" />
-              Criar Campanha
-            </Button>
-          </Link>
-        </div>
       </div>
 
       <div className="grid gap-6 md:grid-cols-3">
         {stats.map((stat) => (
-          <Card key={stat.title} className="border-none shadow-xl shadow-gray-200/50 hover:shadow-2xl hover:shadow-gray-300/60 transition-all duration-300 group overflow-hidden relative">
+          <Card key={stat.title} className="bg-white border border-gray-200/60 shadow-lg shadow-gray-200/40 hover:shadow-xl hover:border-[#9a566b]/20 transition-all duration-300 group overflow-hidden relative">
             <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
               <stat.icon className="w-24 h-24 -mr-8 -mt-8" />
             </div>
@@ -70,7 +62,7 @@ export default function Home() {
       </div>
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        <Card className="border-none shadow-xl shadow-gray-100 bg-white group hover:translate-y-[-4px] transition-transform duration-300">
+        <Card className="bg-white border border-gray-200/60 shadow-lg shadow-gray-200/30 group hover:translate-y-[-4px] hover:border-[#9a566b]/20 transition-all duration-300">
           <CardHeader className="pb-4">
             <div className="flex items-center gap-4">
               <div className="p-3 rounded-xl bg-blue-50 group-hover:bg-blue-100 transition-colors">
@@ -95,7 +87,7 @@ export default function Home() {
           </CardContent>
         </Card>
 
-        <Card className="border-none shadow-xl shadow-gray-100 bg-white group hover:translate-y-[-4px] transition-transform duration-300">
+        <Card className="bg-white border border-gray-200/60 shadow-lg shadow-gray-200/30 group hover:translate-y-[-4px] hover:border-[#9a566b]/20 transition-all duration-300">
           <CardHeader className="pb-4">
             <div className="flex items-center gap-4">
               <div className="p-3 rounded-xl bg-purple-50 group-hover:bg-purple-100 transition-colors">
@@ -120,7 +112,7 @@ export default function Home() {
           </CardContent>
         </Card>
 
-        <Card className="border-none shadow-xl shadow-gray-100 bg-white group hover:translate-y-[-4px] transition-transform duration-300">
+        <Card className="bg-white border border-gray-200/60 shadow-lg shadow-gray-200/30 group hover:translate-y-[-4px] hover:border-[#9a566b]/20 transition-all duration-300">
           <CardHeader className="pb-4">
             <div className="flex items-center gap-4">
               <div className="p-3 rounded-xl bg-pink-50 group-hover:bg-pink-100 transition-colors">
@@ -145,6 +137,7 @@ export default function Home() {
           </CardContent>
         </Card>
       </div>
+
     </div>
   );
 }
